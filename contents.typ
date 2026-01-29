@@ -27,7 +27,7 @@
 
 #set ref(supplement: it => {
   if it.func() == figure {
-    "рис. " + context {counter(heading.where(level: 1)).at(it.label).first()}
+    "рис. " + context {counter(heading.where(level: 1)).at(it.location()).first()}
     "."
   } else if it.func() == heading {
     "разд. "
