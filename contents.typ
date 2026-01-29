@@ -25,6 +25,19 @@
   ]
 }
 
+#set ref(supplement: it => {
+  if it.func() == figure {
+    "рис. " + context {counter(heading.where(level: 1)).at(it.label).first()}
+    "."
+  } else if it.func() == heading {
+    "разд. "
+  } else if it.func() == table {
+    "табл. "
+  }else {
+    ""
+  }
+})
+
 // ? main content
 #include "chapters/introduction.typ"
 #include "chapters/chapter1.typ"
