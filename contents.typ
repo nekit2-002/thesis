@@ -1,5 +1,5 @@
 #include "chapters/abstract.typ"
-
+#import "@preview/i-figured:0.2.4"
 // ? main outline header settings: align to center and make it bigger
 // make top level entries bold
 #show outline: set text(size: 14pt)
@@ -13,12 +13,28 @@
 
 #pagebreak()
 
+// setup figure enumeration
+#set figure(supplement: none)
+#show figure.caption: it => {
+  let custom-prefix = [Рисунок]
+  [
+    #custom-prefix
+    #counter(heading.where(level: 1)).display()#it.counter.display(it.numbering)
+    --
+    #it.body
+  ]
+}
+
 // ? main content
 #include "chapters/introduction.typ"
 #include "chapters/chapter1.typ"
+#counter(figure.where(kind: image)).update(0)
 #include "chapters/chapter2.typ"
+#counter(figure.where(kind: image)).update(0)
 #include "chapters/chapter3.typ"
+#counter(figure.where(kind: image)).update(0)
 #include "chapters/chapter4.typ"
+#counter(figure.where(kind: image)).update(0)
 #include "chapters/conclusion.typ"
 
 // ? insert bibliography

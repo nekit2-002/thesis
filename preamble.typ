@@ -1,4 +1,3 @@
-
 // empty underlined table cell
 #let underlined = table.cell(stroke: (bottom: 1pt))[]
 
