@@ -1,5 +1,4 @@
 #include "chapters/abstract.typ"
-#import "@preview/i-figured:0.2.4"
 // ? main outline header settings: align to center and make it bigger
 // make top level entries bold
 #show outline: set text(size: 14pt)

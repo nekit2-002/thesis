@@ -20,5 +20,7 @@
 #set heading(numbering: "1.1.")
 #show heading: set align(left)
 #show heading.where(level: 1): set align(center)
+#set enum(indent: 7mm)
+#set list(indent: 7mm, marker: [--])
 #include "contents.typ"
 
