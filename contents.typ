@@ -14,25 +14,47 @@
 
 // setup figure enumeration
 #set figure(supplement: none)
-#show figure.caption: it => {
-  let custom-prefix = [Рисунок]
+// place listings and tables caption on top
+#show figure.where(kind: table): set figure.caption(position: top)
+#show figure.where(kind: raw): set figure.caption(position: top)
+#show figure.where(kind: raw): set align(left)
+#show figure.where(kind: raw): set par(first-line-indent: (amount: 0pt, all: true))
+#show figure.caption: it => context {
+  // setup caption structure
+  let custom-prefix = if it.kind == image {
+    [Рисунок]
+  } else if it.kind == table {
+    [Таблица]
+  } else if it.kind == raw {
+    [Листинг]
+  } else {[]}
   [
     #custom-prefix
-    #counter(heading.where(level: 1)).display()#it.counter.display(it.numbering)
+    #it.counter.display(it.numbering)
     --
     #it.body
   ]
 }
 
+// add some space before and after listings, images and tables
+#show figure: f => {
+  linebreak()
+  f
+  linebreak()
+}
+
 #set ref(supplement: it => {
   if it.func() == figure {
-    "рис. " + context {counter(heading.where(level: 1)).at(it.location()).first()}
-    "."
+    if it.kind == image {
+      "рис."
+    } else if it.kind == table {
+      "табл."
+    } else {
+      "лист."
+    }
   } else if it.func() == heading {
-    "разд. "
-  } else if it.func() == table {
-    "табл. "
-  }else {
+    "разд."
+  } else {
     ""
   }
 })
@@ -40,17 +62,18 @@
 // ? main content
 #include "chapters/introduction.typ"
 #include "chapters/chapter1.typ"
-#counter(figure.where(kind: image)).update(0)
 #include "chapters/chapter2.typ"
-#counter(figure.where(kind: image)).update(0)
 #include "chapters/chapter3.typ"
-#counter(figure.where(kind: image)).update(0)
 #include "chapters/chapter4.typ"
-#counter(figure.where(kind: image)).update(0)
 #include "chapters/conclusion.typ"
 
 // ? insert bibliography
-#bibliography("chapters/biblio.bib", title: [Список литературы], style: "chapters/gost-r-7-0-5-2008-numeric.csl", full: false)
+#bibliography(
+  "chapters/biblio.bib",
+  title: [Список литературы],
+  style: "chapters/gost-r-7-0-5-2008-numeric.csl",
+  full: false,
+)
 
 #pagebreak()
 
