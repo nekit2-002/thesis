@@ -35,14 +35,6 @@
     #it.body
   ]
 }
-
-// add some space before and after listings, images and tables
-#show figure: f => {
-  linebreak()
-  f
-  linebreak()
-}
-
 #set ref(supplement: it => {
   if it.func() == figure {
     if it.kind == image {

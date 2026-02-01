@@ -6,7 +6,7 @@
     top: 20mm,
   ),
 )
-#set text(font: "Times New Roman", lang: "ru", hyphenate: true, size: 12pt)
+#set text(font: "Times New Roman", lang: "ru", hyphenate: true, size: 13pt)
 #set par(justify: true, first-line-indent: (amount: 1.25cm, all: true), spacing: 1em, leading: 1em)
 
 
