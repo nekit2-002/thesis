@@ -6,6 +6,14 @@
   text(size: x * 1pt)[#txt]
 }
 
+// alignment for tables and their captions
+#let table_figure(tbl, cap) = {
+  figure(
+    align(right)[#tbl],
+    caption: [#cap],
+  )
+}
+
 #let work_name = "НИР"
 #let student_name = "Косенко Н.И."
 #let supervisor_name = "Климов В.В."

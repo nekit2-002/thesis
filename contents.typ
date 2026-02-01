@@ -16,6 +16,8 @@
 #set figure(supplement: none)
 // place listings and tables caption on top
 #show figure.where(kind: table): set figure.caption(position: top)
+#show figure.where(kind: table): set align(left)
+#show figure.where(kind: table): set par(first-line-indent: (amount: 0pt, all: true))
 #show figure.where(kind: raw): set figure.caption(position: top)
 #show figure.where(kind: raw): set align(left)
 #show figure.where(kind: raw): set par(first-line-indent: (amount: 0pt, all: true))
