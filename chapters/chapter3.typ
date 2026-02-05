@@ -1,4 +1,4 @@
-#import "../biblio.typ":*
+#import "../biblio.typ": *
 #show bibliography: none
 // TODO this import is here only for lsp, need to remove it on release
 // #bibl
@@ -93,11 +93,11 @@ make/meson --- сборочные системы, компилятор язык�
 
 #figure(
   ```bash
-$ meson setup build --prefix=/path/to/pgdir
-$ cd build
-$ ninja
-$ ninja install
-$ mkdir -p /path/to/pgdir/data
+  $ meson setup build --prefix=/path/to/pgdir
+  $ cd build
+  $ ninja
+  $ ninja install
+  $ mkdir -p /path/to/pgdir/data
   ```,
   caption: [Команды сборки PostgreSQL из исходного кода],
 ) <lst:pg-compile>
@@ -109,7 +109,7 @@ $ mkdir -p /path/to/pgdir/data
 После установки cargo требуется установить pgrx, что можно сделать командой:
 #figure(
   ```bash
-$ cargo install --locked cargo-pgrx
+  $ cargo install --locked cargo-pgrx
   ```,
   caption: [Команда установки pgrx],
 ) <lst:install-pgrx>
@@ -125,7 +125,7 @@ PostgreSQL в bin каталоге по пути prefix создается ис�
 
 #figure(
   ```bash
-$ cargo pgrx init --pg{$VER}=/path/to/pgdir/bin/pg_config
+  $ cargo pgrx init --pg{$VER}=/path/to/pgdir/bin/pg_config
   ```,
   caption: [Команда задания версии Postgres для сборки pgrx],
 ) <lst:pgrx-init>
@@ -136,7 +136,7 @@ $ cargo pgrx init --pg{$VER}=/path/to/pgdir/bin/pg_config
 
 #figure(
   ```bash
-$ cargo pgrx install --release --pg-config=/full/path/to/pgdir/bin/pg_config
+  $ cargo pgrx install --release --pg-config=/full/path/to/pgdir/bin/pg_config
   ```,
   caption: [Команда запуска сборки и установки расширения],
 ) <lst:pgrx-release>
@@ -147,10 +147,10 @@ $ cargo pgrx install --release --pg-config=/full/path/to/pgdir/bin/pg_config
 
 #figure(
   ```bash
-$ /path/to/pgdir/bin/initdb -D /path/to/pgdir/data
-$ /path/to/pgdir/bin/pg_ctl -D .../data -l .../data/logfile.log start
-$ /path/to/pgdir/bin/createdb test
-$ /path/to/pgdir/bin/psql test
+  $ /path/to/pgdir/bin/initdb -D /path/to/pgdir/data
+  $ /path/to/pgdir/bin/pg_ctl -D .../data -l .../data/logfile.log start
+  $ /path/to/pgdir/bin/createdb test
+  $ /path/to/pgdir/bin/psql test
 
   ```,
   caption: [Пример инициализации кластера и подключения к БД],

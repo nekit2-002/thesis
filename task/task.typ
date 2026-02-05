@@ -1,17 +1,9 @@
-#import "../preamble.typ": (
-  student_name,
-  supervisor_name,
-  text_xpt,
-  underlined,
-  work_name,
-  student_group,
-  thesis_theme
-)
+#import "../preamble.typ": student_group, student_name, supervisor_name, text_xpt, thesis_theme, underlined, work_name
 
 #set text(
   size: 10pt,
 )
-#set par(spacing: 5pt, justify: false,  leading: 0.65em)
+#set par(spacing: 5pt, justify: false, leading: 0.65em)
 #set align(center)
 МИНИСТЕРСТВО НАУКИ И ВЫСШЕГО ОБРАЗОВАНИЯ РОССИЙСКОЙ ФЕДЕРАЦИИ
 
