@@ -21,6 +21,7 @@
 #show figure.where(kind: raw): set figure.caption(position: top)
 #show figure.where(kind: raw): set align(left)
 #show figure.where(kind: raw): set par(first-line-indent: (amount: 0pt, all: true))
+#show figure.where(kind: raw): f => { [#linebreak() #f #linebreak()] }
 #show figure.caption: it => context {
   // setup caption structure
   let custom-prefix = if it.kind == image {
@@ -29,7 +30,7 @@
     [Таблица]
   } else if it.kind == raw {
     [Листинг]
-  } else {[]}
+  } else { [] }
   [
     #custom-prefix
     #it.counter.display(it.numbering)
