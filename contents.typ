@@ -68,6 +68,7 @@
 #include "chapters/conclusion.typ"
 
 // ? insert bibliography
+#show link: underline
 #bibliography(
   "chapters/biblio.bib",
   title: [Список литературы],
