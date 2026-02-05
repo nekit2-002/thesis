@@ -219,20 +219,23 @@
         </group>
         <!-- ? тире перед годом -->
         <group delimiter=", ">
-        <!-- <group delimiter=" &#8212; "> -->
+        <!-- <group> -->
           <!-- Выходные данные -->
           <text macro="publisher"/>
+          <!-- ?  еще одно тире перед годом -->
+          <!-- <text macro="issued-year" prefix=" &#8212; "/> -->
           <text macro="issued-year"/>
         </group>
         <!-- Сведения о местоположении составной части в документе или физические характеристики -->
-        <!-- ? тире перед страницей -->
-        <!-- <group delimiter=" &#8212; "> -->
-        <!-- ? тире перед томом -->
+        <group>
+          <!-- ? тире перед томом -->
           <!-- <text macro="locators" prefix=" &#8212; "/> -->
           <text macro="locators"/>
+          <!-- ? тире перед страницей -->
+          <!-- <text macro="page" prefix=" &#8212; "/> -->
           <text macro="page"/>
           <text macro="access"/>
-        <!-- </group> -->
+        </group>
         <!-- URL -->
         <text variable="URL" prefix="URL: "/>
         <group delimiter=": " prefix=" (" suffix=")">
