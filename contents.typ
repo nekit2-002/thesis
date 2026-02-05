@@ -14,6 +14,8 @@
 
 // setup figure enumeration
 #set figure(supplement: none)
+#show figure: set place(clearance: 1cm)
+#show figure: set block(spacing: 1cm)
 // place listings and tables caption on top
 #show figure.where(kind: table): set figure.caption(position: top)
 #show figure.where(kind: table): set align(left)
@@ -21,7 +23,6 @@
 #show figure.where(kind: raw): set figure.caption(position: top)
 #show figure.where(kind: raw): set align(left)
 #show figure.where(kind: raw): set par(first-line-indent: (amount: 0pt, all: true))
-#show figure.where(kind: raw): f => { [#linebreak() #f #linebreak()] }
 #show figure.caption: it => context {
   // setup caption structure
   let custom-prefix = if it.kind == image {
