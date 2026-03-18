@@ -54,7 +54,7 @@
       полностью определяться локалью, включая род терминов. -->
       <term name="ordinal">-е</term>
       <!-- <term name="page">&#8212; C.</term> -->
-      <term name="page"> с.</term> 
+      <term name="page"> с.</term>
     </terms>
   </locale>
   <!-- Macros -->
@@ -219,21 +219,22 @@
         </group>
         <!-- ? тире перед годом -->
         <group delimiter=", ">
+        <!-- <group delimiter=" &#8212; "> -->
         <!-- <group> -->
           <!-- Выходные данные -->
           <text macro="publisher"/>
           <!-- ?  еще одно тире перед годом -->
-          <!-- <text macro="issued-year" prefix=" &#8212; "/> -->
-          <text macro="issued-year"/>
+          <text macro="issued-year" prefix=" &#8212; "/>
+          <!-- <text macro="issued-year"/> -->
         </group>
         <!-- Сведения о местоположении составной части в документе или физические характеристики -->
         <group>
           <!-- ? тире перед томом -->
-          <!-- <text macro="locators" prefix=" &#8212; "/> -->
-          <text macro="locators"/>
+          <text macro="locators" prefix=" &#8212; "/>
+          <!-- <text macro="locators"/> -->
           <!-- ? тире перед страницей -->
-          <!-- <text macro="page" prefix=" &#8212; "/> -->
-          <text macro="page"/>
+          <text macro="page" prefix=" &#8212; "/>
+          <!-- <text macro="page"/> -->
           <text macro="access"/>
         </group>
         <!-- URL -->
