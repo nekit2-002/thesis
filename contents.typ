@@ -81,4 +81,5 @@
 // ? start of appendix section
 #counter(heading).update(0)
 #set heading(numbering: "A.1.", supplement: [Приложение])
+#show figure: set block(breakable: true)
 #include "appendices/appendix1.typ"

@@ -14,6 +14,10 @@
   )
 }
 
+#let file_listing(file, lang, cap) = {
+  figure(raw(read(file), lang: lang, block: true), caption: [#cap])
+}
+
 #let work_name = "НИР"
 #let student_name = "Косенко Н.И."
 #let supervisor_name = "Климов В.В."
