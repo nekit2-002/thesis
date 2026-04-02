@@ -1,6 +1,6 @@
 #import "../preamble.typ": file_listing
 
-= Реализация основных интерфейсов
+= Реализация основных интерфейсов <fst_appendix>
 #file_listing("listings/tableam.rs", "rust", "Реализация TableAmRoutine на Rust") <lst:tableam>
 #file_listing("listings/trans.rs", "rust", "Связка типа TableAmArgs с типом internal") <lst:trans>
 #file_listing("listings/ops.rs", "rust", "Операции, описываемые структурой TupleTableSlotOps")<lst:ops>
