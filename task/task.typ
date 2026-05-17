@@ -39,7 +39,8 @@
       #linebreak()
       #linebreak()
     ],
-    table.cell(colspan: 2, "Задание на " + work_name),
+    // table.cell(colspan: 2, "Задание на " + work_name),
+    table.cell(colspan: 2, "Задание на преддипломную практику")
   )
 }
 
@@ -56,7 +57,8 @@
 
 #linebreak()
 
-#text("ТЕМА " + work_name, size: 16pt, weight: "bold")
+// #text("ТЕМА " + work_name, size: 16pt, weight: "bold")
+#text("ТЕМА преддипломной практики", size: 16pt, weight: "bold")
 
 #linebreak()
 #linebreak()

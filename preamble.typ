@@ -22,5 +22,6 @@
 #let student_name = "Косенко Н.И."
 #let supervisor_name = "Климов В.В."
 #let student_group = "М24-514"
-#let document_type = "Пояснительная записка"
+// #let document_type = "Пояснительная записка"
+#let document_type = "Отчет"
 #let thesis_theme = "Разработка оптимизированного табличного метода доступа для СУБД PostgreSQL"

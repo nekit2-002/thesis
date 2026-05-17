@@ -1,6 +1,6 @@
 #import "../preamble.typ": (
-  document_type, 
-  student_name, 
+  document_type,
+  student_name,
   supervisor_name,
   text_xpt,
   thesis_theme,
@@ -60,7 +60,8 @@
     ],
     table.cell(colspan: 2, "Направление подготовки 09.04.04 Программная инженерия\n\n"),
     table.cell(colspan: 2, document_type),
-    table.cell(colspan: 2, "к научно-исследовательской работе студента на тему:\n\n"),
+    // table.cell(colspan: 2, "к научно-исследовательской работе студента на тему:\n\n"),
+    table.cell(colspan: 2, "к производственной (преддипломной) практике на тему:\n\n"),
   )
 }
 
