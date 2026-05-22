@@ -10,4 +10,9 @@
 #file_listing("listings/tuplesat.rs", "rust", "Реализаця tuple_satisfies_snapshot")<lst:tuplesat>
 #file_listing("listings/scan-end.rs", "rust", "реализация scan_end")<lst:scanend>
 
+= Реализация функций взаимодействия с журналом предзаписи <snd_appendix>
+#file_listing("listings/wal_stuff/rsam_redo_insert.rs", "rust","Реализация функции rsam_redo_insert")
+#file_listing("listings/wal_stuff/rsam_redo_update.rs","rust", "Реализация функции rsam_redo_update")
+#file_listing("listings/wal_stuff/rsam_redo_apply_tuple.rs","rust", "Реализация функции rsam_redo_apply_tuple")
+
 // = Приложение 2
