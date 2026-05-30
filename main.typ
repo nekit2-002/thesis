@@ -14,7 +14,7 @@
 // #include "title/title.typ"
 // #image("title/title.pdf", format: "pdf")
 // task
-#include "task/task.typ"
+// #include "task/task.typ"
 
 #set page(numbering: "1")
 #counter(page).update(2)

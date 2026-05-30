@@ -1,7 +1,7 @@
 all: Косенко_НИ_ВКР.pdf
 
 Косенко_НИ_ВКР.pdf: main.pdf title/internal.pdf
-	pdftk title/title_external.pdf title/internal.pdf main.pdf cat output Косенко_НИ_ВКР.pdf
+	pdftk title/title_external.pdf title/internal.pdf task/vkr_task.pdf main.pdf cat output Косенко_НИ_ВКР.pdf
 
 main.pdf: main.typ
 	typst compile main.typ main.pdf
