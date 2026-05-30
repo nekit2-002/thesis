@@ -18,12 +18,9 @@
   figure(raw(read(file), lang: lang, block: true), caption: [#cap])
 }
 
-#let work_name = "НИР"
+#let work_name = "ВКР"
 #let student_name = "Косенко Н.И."
 #let supervisor_name = "Климов В.В."
 #let student_group = "М24-514"
-// #let document_type = "Пояснительная записка"
-#let document_type = "Отчет"
-// #let thesis_theme = "Разработка оптимизированного табличного метода доступа для СУБД PostgreSQL"
-#let thesis_theme = "Разработка модуля поддержки предварительного журналирования действий
-оптимизированного табличного метода доступа для СУБД PostgreSQL"
+#let document_type = "Пояснительная записка"
+#let thesis_theme = "Разработка оптимизированного табличного метода доступа для СУБД PostgreSQL"

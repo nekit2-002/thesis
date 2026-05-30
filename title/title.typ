@@ -60,8 +60,8 @@
     ],
     table.cell(colspan: 2, "Направление подготовки 09.04.04 Программная инженерия\n\n"),
     table.cell(colspan: 2, document_type),
-    // table.cell(colspan: 2, "к научно-исследовательской работе студента на тему:\n\n"),
-    table.cell(colspan: 2, "к производственной (преддипломной) практике на тему:\n\n"),
+    table.cell(colspan: 2, "к ВКР магистра на тему:\n"),
+    // table.cell(colspan: 2, "к производственной (преддипломной) практике на тему:\n\n"),
   )
 }
 
@@ -108,7 +108,7 @@
   [], [], [], [],
   text_xpt("Итоговая оценка", 13), underlined, text_xpt("ECTS", 13), underlined,
   [], text_xpt("(0-100 баллов)", 9), [], [],
-  table.cell(colspan: 4, "\nКомиссия"),
+  table.cell(colspan: 4, text_xpt("\nКомиссия", 14)),
 )
 
 #table(
@@ -125,3 +125,4 @@
   ..author_cells, [],
 )
 
+#linebreak()

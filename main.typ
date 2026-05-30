@@ -12,6 +12,7 @@
 
 // title
 // #include "title/title.typ"
+// #image("title/title.pdf", format: "pdf")
 // task
 #include "task/task.typ"
 

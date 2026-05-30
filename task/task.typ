@@ -35,12 +35,11 @@
 
       #linebreak()],
     [
-      *КАФЕДРА КИБЕРНЕТИКИ*
+      *КАФЕДРА №22 «КИБЕРНЕТИКА»*
       #linebreak()
       #linebreak()
     ],
-    // table.cell(colspan: 2, "Задание на " + work_name),
-    table.cell(colspan: 2, "Задание на преддипломную практику")
+    table.cell(colspan: 2, "Задание на " + work_name),
   )
 }
 
@@ -57,8 +56,7 @@
 
 #linebreak()
 
-// #text("ТЕМА " + work_name, size: 16pt, weight: "bold")
-#text("ТЕМА преддипломной практики", size: 16pt, weight: "bold")
+#text("ТЕМА " + work_name, size: 16pt, weight: "bold")
 
 #linebreak()
 #linebreak()
