@@ -59,6 +59,9 @@
   }
 })
 
+#set math.equation(numbering: "(1)")
+
+
 // ? main content
 #include "chapters/introduction.typ"
 #include "chapters/chapter1.typ"
