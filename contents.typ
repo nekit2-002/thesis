@@ -60,7 +60,7 @@
 })
 
 #set math.equation(numbering: "(1)")
-
+// #show heading.where(level: 1): numbering("1")
 
 // ? main content
 #include "chapters/introduction.typ"
@@ -84,5 +84,7 @@
 // ? start of appendix section
 #counter(heading).update(0)
 #set heading(numbering: "A.1.", supplement: [Приложение])
+// так же как и в main эта херня чтобы не прдрались к точкам на верхнем уровне
+// #set heading(numbering: "A.1", supplement: [Приложение])
 #show figure: set block(breakable: true)
 #include "appendices/appendix1.typ"
