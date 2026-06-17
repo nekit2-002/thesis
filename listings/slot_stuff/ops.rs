@@ -7,6 +7,7 @@ pub struct TupleTableSlotOps {
     pub getsysattr: Option<unsafe extern "C" fn(slot: *mut TupleTableSlot, attnum: c_int, isnull: *mut bool) -> Datum>,
     pub materialize: Option<unsafe extern "C" fn(slot: *mut TupleTableSlot)>,
     pub copyslot: Option<unsafe extern "C" fn(dstslot: *mut TupleTableSlot, srcslot: *mut TupleTableSlot)>,
+    pub is_current_xact_tuple: Option<unsafe extern "C-unwind" fn(slot: *mut TupleTableSlot) -> bool>
     pub get_heap_tuple: Option<unsafe extern "C" fn(slot: *mut TupleTableSlot) -> HeapTuple>,
     pub get_minimal_tuple: Option<unsafe extern "C" fn(slot: *mut TupleTableSlot) -> MinimalTuple>,
     pub copy_heap_tuple: Option<unsafe extern "C" fn(slot: *mut TupleTableSlot) -> HeapTuple>,
