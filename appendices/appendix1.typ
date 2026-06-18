@@ -6,8 +6,7 @@
 #file_listing("listings/slot_stuff/ops.rs", "rust", "Операции, описываемые структурой TupleTableSlotOps")<lst:ops>
 #file_listing("listings/slot_stuff/rsamops.rs", "rust", "Static переменная, описывающая коллбеки слота")<lst:rsamops>
 #file_listing("listings/slot_stuff/rsam_deform_tuple.rs", "rust", "Функция для трансляции атрибутов в массив Datum объектов")<lst:rsam_deform_tuple>
-// #file_listing("listings/slot_stuff/rsamtuple.rs", "rust", "Основной тип, описывающий структуру кортежа
-// метода доступа rsam")<lst:rsam_tuple>
+#file_listing("listings/slot_stuff/rsam_getsysattr.rs", "rust", "Функция для получения системного атрибута")<lst:rsam_getsysattr>
 #file_listing("listings/handler_stuff/insert.rs", "rust", "Метод вставки в таблицу")<lst:insert1>
 #file_listing("listings/handler_stuff/scan-begin.rs", "rust", "Реализация scan_begin")<lst:scanbeg>
 #file_listing("listings/handler_stuff/next-slot.rs", "rust", "Реализация scan_getnextslot")<lst:next-slot>

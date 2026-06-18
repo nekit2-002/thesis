@@ -1,5 +1,5 @@
 #[pg_guard]
-pub unsafe extern "C-unwind" fn heap_insert(
+pub unsafe extern "C-unwind" fn rsam_insert(
     rel: *mut RelationData,
     tup: *mut HeapTupleData,
     cid: CommandId,
@@ -9,10 +9,10 @@ pub unsafe extern "C-unwind" fn heap_insert(
     let xid = GetCurrentTransactionId();
     let mut vmbuffer = InvalidBuffer as i32;
     let mut all_visible_cleared = false;
-    Assert(HeapTupleHeaderGetNatts((*tup).t_data) <= (*(*rel).rd_rel).relnatts as u16);
+    Assert(RsAmTupleHeaderGetNatts((*tup).t_data) <= (*(*rel).rd_rel).relnatts as u16);
 
     let tuple = prepare_insert(rel, tup, xid, cid, options);
-    let buffer = RelationGetBufferForTuple(
+    let buffer = RelationGetBufferForRsAmTuple(
         rel,
         (*tuple).t_len as usize,
         InvalidBuffer as i32,
@@ -24,6 +24,27 @@ pub unsafe extern "C-unwind" fn heap_insert(
     );
 
     START_CRIT_SECTION!();
+    let insert_record = contstruct_undo_record(tup, rel, cid, options);
+    let latest_undo_ptr = GetCurrentUndoPtr();
+    let undo_buffer = GetUndoBufferByPtr(latest_undo_ptr);
+    let undo_page = BufferGetPage(undo_buffer);
+    insert_undo_record(insert_record, latest_undo_ptr);
+    if RelationNeedsWal(relation) {
+        let xl_undo_insert_rec = construct_undo_insert_wal_record(insert_record);
+        XLogBeginInsert();
+        XLogRegisterData(&raw const xl_undo_insert_rec, std::mem::sizeof<Xl_undo_insert_rec>());
+        XLogRegisterBuffer(0, REGBUFF_STANDARD)
+        XLogRegisterBufData(
+            0,
+            &raw const xl_undo_insert_rec.data as *mut i8 + SizeOfUndoInsertRecordHeader,
+            xl_undo_insert_rec.rec_len - SizeOfUndoInsertRecordHeader
+        );
+        XLogSetRecordFlags(XLOG_INCLUDE_ORIGIN);
+        let recptr = XLogInsert(RM_RSAM_ID);
+        PageSetLSN(undo_page, recptr);
+    }
+
+
     relation_put_tuple(rel, buffer, tuple);
     if PageIsAllVisible(BufferGetPage(buffer)) {
         all_visible_cleared = true;
@@ -37,6 +58,20 @@ pub unsafe extern "C-unwind" fn heap_insert(
     }
 
     MarkBufferDirty(buffer);
+    if RelationNeedsWal(relation) {
+        let xl_insert_rec = construct_rsam_insert_rec(tup);
+        XLogBeginInsert();
+        XLogRegisterData(&raw const xl_insert_rec, std::mem::sizeof<Xl_insert_rec>());
+        XLogRegisterBuffer(0, buffer, REGBUFF_STANDARD);
+        XLogRegisterBufData(0,
+            (*tup).t_data as *mut i8 + SizeOfRsAmTupleHeader,
+            (*tup).t_len - SizeOfRsAmTupleHeader,
+        );
+
+        XLogSetRecordFlags(XLOG_INCLUDE_ORIGIN);
+        let recptr = XLogInsert(RM_RSAM_ID);
+        PageSetLSN(BufferGetPage(buffer), recptr);
+    }
     END_CRIT_SECTION!();
 
     UnlockReleaseBuffer(buffer);
