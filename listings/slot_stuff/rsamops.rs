@@ -15,3 +15,15 @@ pub static TTSOpsRsAmTuple: TupleTableSlotOps = TupleTableSlotOps {
     copy_heap_tuple: Some(tts_rsam_copy_heap_tuple),
     copy_minimal_tuple: Some(tts_rsam_copy_minimal_tuple),
 };
+
+#[pg_guard]
+unsafe extern "C-unwind" fn tts_rsam_init(_slot: *mut TupleTableSlot) {}
+
+#[pg_guard]
+unsafe extern "C-unwind" fn tts_rsam_release(_slot: *mut TupleTableSlot) {}
+
+#[pg_guard]
+unsafe extern "C-unwind" fn tts_rsam_getsomeattrs(slot: *mut TupleTableSlot, natts: i32) {
+    rsamslot: *mut RsAmTupleTableSlot = slot as *mut RsAmTupleTableSlot;
+    slot_deform_rsam_tuple(slot, (*rsamslot).tuple, &mut (*rsamslot).off as i32, natts)
+}
