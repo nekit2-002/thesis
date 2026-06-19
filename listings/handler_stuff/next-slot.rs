@@ -1,23 +1,22 @@
 pub unsafe fn scan_getnextslot(
-	sscan: *mut TableScanDescData,
-	direction: ScanDirection,
-	slot: *mut TupleTableSlot,
-) -> bool { 
-	if sscan.is_null() || slot.is_null() {
-    	return false;
-	}
+    sscan: *mut TableScanDescData,
+    direction: ScanDirection,
+    slot: *mut TupleTableSlot,
+) -> bool {
+    if sscan.is_null() || slot.is_null() {
+        return false;
+    }
 
-	let scan = sscan as *mut HeapScanDescData;
+    let scan = sscan as *mut RsAmDescData;
 
-    heapgettup( scan, direction, (*sscan).rs_nkeys, (*sscan).rs_key, );
+    rsamgettup(scan, direction, (*sscan).rs_nkeys, (*sscan).rs_key);
 
-	if (*scan).rs_ctup.t_data.is_null() {
-    	ExecClearTuple(slot);
-    	return false;
-	}
+    if (*scan).rs_ctup.t_data.is_null() {
+        ExecClearTuple(slot);
+        return false;
+    }
 
-	pgstat_count_heap_getnext((*scan).rs_base.rs_rd);
-	ExecStoreBufferHeapTuple(&(*scan).rs_ctup, slot, (*scan).rs_cbuf);
-	true
+    pgstat_count_heap_getnext((*scan).rs_base.rs_rd);
+    ExecStoreRsAmTuple(&(*scan).rs_ctup, slot, (*scan).rs_cbuf);
+    true
 }
-

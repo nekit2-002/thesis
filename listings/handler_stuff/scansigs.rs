@@ -1,24 +1,24 @@
 unsafe extern "C" fn scan_begin(
-    _rel: *mut RelationData, 
-    _snapshot: *mut SnapshotData, 
-    _nkeys: i32,
-    _keys: *mut ScanKeyData,
-    _pscan: *mut ParallelTableScanDescData,
-    _flags: u32,
+    rel: *mut RelationData,
+    snapshot: *mut SnapshotData,
+    nkeys: i32,
+    keys: *mut ScanKeyData,
+    pscan: *mut ParallelTableScanDescData,
+    flags: u32,
 ) -> pg_sys::TableScanDesc
 
-unsafe extern "C" fn scan_end(_desc: TableScanDesc)
+unsafe extern "C" fn scan_end(desc: TableScanDesc)
 
 unsafe extern "C" fn scan_getnextslot(
-    _scan: TableScanDesc,
-    _direction: ScanDirection::Type,
-    _slot: *mut TupleTableSlot,
+    scan: TableScanDesc,
+    direction: ScanDirection::Type,
+    slot: *mut TupleTableSlot,
 ) -> bool
 
 unsafe extern "C" fn tuple_satisfies_snapshot(
-    _rel: Relation,
-    _slot: *mut TupleTableSlot,
-    _snapshot: Snapshot,
+    rel: Relation,
+    slot: *mut TupleTableSlot,
+    snapshot: Snapshot,
 ) -> bool
 
 

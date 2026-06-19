@@ -1,6 +1,5 @@
 unsafe extern "C" fn scan_end(sscan: *mut TableScanDesc) {
-
-    let scan = sscan as *mut HeapScanDesc;
+    let scan = sscan as *mut RsAmScanDescData;
     if BufferIsValid((*scan).rs_cbuf) {
         ReleaseBuffer((*scan).rs_cbuf);
     }

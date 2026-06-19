@@ -1,23 +1,19 @@
 #[pg_guard]
 unsafe extern "C" fn tuple_satisfies_snapshot(
-	rel: *mut RelationData,
-	slot: *mut TupleTableSlot,  
-	snapshot: *mut SnapshotData,
+    rel: *mut RelationData,
+    slot: *mut TupleTableSlot,
+    snapshot: *mut SnapshotData,
 ) -> bool {
-	if rel.is_null() || slot.is_null() || snapshot.is_null() {
-    	return false; 
-	}
+    if rel.is_null() || slot.is_null() || snapshot.is_null() {
+        return false;
+    }
 
-	let bslot = slot as *mut BufferHeapTupleTableSlot;
-	LockBuffer((*bslot).buffer, BUFFER_LOCK_SHARE);
+    let rsamlot = slot as *mut RsAmTupleTableSlot;
+    LockBuffer((*bslot).buffer, BUFFER_LOCK_SHARE);
 
-	let res = HeapTupleSatisfiesVisibility(
-    	(*bslot).base.tuple,
-    	snapshot,
-    	(*bslot).buffer,
-	);
+    let res = HeapTupleSatisfiesVisibility((*bslot).base.tuple, snapshot, (*bslot).buffer);
 
-	LockBuffer((*bslot).buffer, BUFFER_LOCK_UNLOCK);
+    LockBuffer((*bslot).buffer, BUFFER_LOCK_UNLOCK);
 
-	res
+    res
 }

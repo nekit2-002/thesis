@@ -12,7 +12,8 @@ unsafe extern "C" fn scan_begin(
 
     RelationIncrementReferenceCount(relation);
 
-    let scan: *mut HeapScanDescData = palloc(std::mem::size_of::<HeapScanDescData>()) as *mut HeapScanDescData;
+    let scan: *mut RsAmScanDescData =
+        palloc(std::mem::size_of::<RsAmScanDescData>()) as *mut RsAmScanDescData;
 
     (*scan).rs_base.rs_rd = relation;
     (*scan).rs_base.rs_snapshot = snapshot;
@@ -29,7 +30,8 @@ unsafe extern "C" fn scan_begin(
     (*scan).rs_ctup.t_tableOid = RelationGetRelid(relation);
 
     if !parallel_scan.is_null() {
-        (*scan).rs_parallelworkerdata = palloc(std::mem::size_of::<ParallelBlockTableScanWorkerData>()) as *mut _;
+        (*scan).rs_parallelworkerdata =
+            palloc(std::mem::size_of::<ParallelBlockTableScanWorkerData>()) as *mut _;
     } else {
         (*scan).rs_parallelworkerdata = ptr::null_mut();
     }
@@ -46,9 +48,9 @@ unsafe extern "C" fn scan_begin(
 
     if flags & SO_TYPE_SEQSCAN != 0 || flags & SO_TYPE_TIDRANGESCAN != 0 {
         let cb = if !parallel_scan.is_null() {
-            heap_scan_stream_read_next_parallel
+            rsam_scan_stream_read_next_parallel
         } else {
-            heap_scan_stream_read_next_serial
+            rsam_scan_stream_read_next_serial
         };
 
         (*scan).rs_read_stream = read_stream_begin_relation(
