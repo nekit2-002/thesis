@@ -22,7 +22,27 @@ pub unsafe extern "C-unwind" fn rsam_desc(buf: *mut StringInfoData, record: *mut
         );
     } else if info == XLOG_RSAM_INSERT {
         let xlrec = rec as *mut Xl_rsam_insert;
+        appendStringInfo(buf, "off: {}, flags: {}", (*xlrec).offnum, (*xlrec).flags)
     } else if info == XLOG_RSAM_DELETE {
+        let xlrec = rec as *mut Xl_rsam_delete;
+        appendStringInfo(
+            buf,
+            "xmax: {}, off: {}, infobits: {}, flags: {}",
+            (*xlrec).xmax,
+            (*xlrec).offnum,
+            (*xlrec).infobits_set,
+            (*xlrec).flags,
+        )
     } else if info == XLOG_RSAM_UPDATE {
+        let xlrec = rec as *mut Xl_rsam_update;
+        appendStringInfo(
+            buf,
+            "new_xmax: {}, off: {}, infobits: {}, flags: {}, rollptr: {}",
+            (*xlrec).new_xmax,
+            (*xlrec).offnum,
+            (*xlrec).infobits_set,
+            (*xlrec).flags,
+            (*xlrec).rollptr,
+        )
     }
 }
