@@ -17,9 +17,11 @@
 #file_listing("listings/handler_stuff/scan-end.rs", "rust", "Реализация scan_end")<lst:scanend>
 #file_listing("listings/delete/rsam_delete.rs", "rust", "Реализация tuple_delete")<lst:delete>
 
-// = Реализация функций взаимодействия с журналом предзаписи <snd_appendix>
-// #file_listing("listings/wal_stuff/rsam_redo_insert.rs", "rust","Реализация функции rsam_redo_insert")
-// #file_listing("listings/wal_stuff/rsam_redo_update.rs","rust", "Реализация функции rsam_redo_update")
+= Реализация функций взаимодействия с журналом предзаписи <snd_appendix>
+#file_listing("listings/wal_stuff/rsam_redo.rs", "rust","Реализация коллбека rsam_redo")<lst:rsam_redo>
+#file_listing("listings/wal_stuff/rsam_redo_insert.rs", "rust","Реализация функции rsam_redo_insert")<lst:rsam_redo_insert>
+#file_listing("listings/wal_stuff/rsam_identify.rs","rust", "Реализация коллбека rsam_identify")<lst:rsam_identify>
+#file_listing("listings/wal_stuff/rsam_desc.rs", "rust", "Реализация коллбека rsam_desc")<lst:rsam_desc>
 // #file_listing("listings/wal_stuff/rsam_redo_apply_tuple.rs","rust", "Реализация функции rsam_redo_apply_tuple")
 
 // = Приложение 2

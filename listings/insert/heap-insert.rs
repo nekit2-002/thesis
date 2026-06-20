@@ -30,10 +30,12 @@ pub unsafe extern "C-unwind" fn rsam_insert(
     let undo_page = BufferGetPage(undo_buffer);
     insert_undo_record(insert_record, latest_undo_ptr);
     if RelationNeedsWal!(relation) {
-        let xl_undo_insert_rec = construct_undo_insert_wal_record(insert_record);
+        let xl_undo_insert_rec = construct_undo_insert_wal_record(insert_record, undo_page);
+        let xl_undo_insert_header = extract_header_from_undo_record(insert_record);
         XLogBeginInsert();
-        XLogRegisterData(&raw const xl_undo_insert_rec, std::mem::sizeof<Xl_undo_insert_rec>());
+        XLogRegisterData(&raw const xl_undo_insert_rec, std::mem::sizeof<Xl_undo_insert>());
         XLogRegisterBuffer(0, REGBUF_STANDARD)
+        XLogRegisterBufData(0, &raw mut xl_undo_insert_header, SizeOfUndoInsertRecordHeader);
         XLogRegisterBufData(
             0,
             &raw const xl_undo_insert_rec.data as *mut i8 + SizeOfUndoInsertRecordHeader,
@@ -61,7 +63,8 @@ pub unsafe extern "C-unwind" fn rsam_insert(
     if RelationNeedsWal!(relation) {
         let xl_insert_rec = construct_rsam_insert_rec(tup);
         XLogBeginInsert();
-        XLogRegisterData(&raw const xl_insert_rec, std::mem::sizeof<Xl_insert_rec>());
+        XLogRegisterData(&raw const xl_insert_rec, std::mem::sizeof<Xl_rsam_insert>());
+
         XLogRegisterBuffer(0, buffer, REGBUF_STANDARD);
         XLogRegisterBufData(0,
             (*tup).t_data as *mut i8 + SizeOfRsAmTupleHeader,

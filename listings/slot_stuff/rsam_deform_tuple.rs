@@ -39,7 +39,7 @@ unsafe extern "C-unwind" fn slot_deform_rsam_tuple(
         }
 
         if (*thisatt).attbyval {
-            let mut datum = Datum::new();
+            let mut datum = Datum { std::ptr::null_mut() };
             datum.copy_from_slice(tp, (*thisatt).attlen);
 
             let datum = fetch_att(datum, true, (*thisatt).attlen);
