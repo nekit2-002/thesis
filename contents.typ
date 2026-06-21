@@ -1,7 +1,7 @@
 #include "chapters/abstract.typ"
 // ? main outline header settings: align to center and make it bigger
 // make top level entries bold
-#show outline: set text(size: 14pt)
+#show outline: set text(size: 12pt)
 #show outline.entry.where(level: 1): set text(weight: "bold")
 // do not include appendices to main outline
 #outline(target: selector(heading).before(<fst_appendix>, inclusive: false))
