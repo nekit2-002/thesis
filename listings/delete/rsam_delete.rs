@@ -111,7 +111,14 @@ unsafe extern "C-unwind" fn tuple_delete(
     }
 
     if !crosscheck.is_null() && result == TM_Ok {
-        if !rsam_find_appropriate_tuple(&raw mut tp, crosscheck, buffer) {
+        if !rsam_find_appropriate_tuple(
+            rel,
+            buffer,
+            ItemPointerGetOffsetNumber(tid),
+            crosscheck,
+            &raw mut tid,
+            &raw mut tp,
+        ) {
             result = TM_Updated;
         }
     }

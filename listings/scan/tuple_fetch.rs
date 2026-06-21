@@ -39,17 +39,10 @@ pub unsafe extern "C-unwind" fn fetch_tuple(
     (*tup).t_data = PageGetItem(page, lp).cast();
     (*tup).t_len = (*lp).lp_len();
     (*tup).t_tableOid = RelationGetRelId!(rel);
-    let mut ctid = *tid;
     let mut resulttup = std::ptr::null_mut();
 
-    let valid = rsam_find_appropriate_tuple(
-        relation,
-        buffer,
-        offnum,
-        snapshot,
-        &raw mut ctid,
-        &raw mut resulttup,
-    );
+    let valid =
+        rsam_find_appropriate_tuple(relation, buffer, offnum, snapshot, tid, &raw mut resulttup);
     LockBuffer(buffer, BUFFER_LOCK_UNLOCK as i32);
     if valid && !resulttup.is_null() {
         *tup = resulttup;
