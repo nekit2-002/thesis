@@ -7,7 +7,7 @@ pub unsafe fn scan_getnextslot(
         return false;
     }
 
-    let scan = sscan as *mut RsAmDescData;
+    let scan = sscan as *mut RsAmScanDescData;
 
     rsamgettup(scan, direction, (*sscan).rs_nkeys, (*sscan).rs_key);
 
