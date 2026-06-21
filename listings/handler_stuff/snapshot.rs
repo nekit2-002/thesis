@@ -9,11 +9,11 @@ unsafe extern "C" fn tuple_satisfies_snapshot(
     }
 
     let rsamlot = slot as *mut RsAmTupleTableSlot;
-    LockBuffer((*bslot).buffer, BUFFER_LOCK_SHARE);
+    LockBuffer((*bslot).buffer, BUFFER_LOCK_SHARE as i32);
 
     let res = HeapTupleSatisfiesVisibility((*bslot).base.tuple, snapshot, (*bslot).buffer);
 
-    LockBuffer((*bslot).buffer, BUFFER_LOCK_UNLOCK);
+    LockBuffer((*bslot).buffer, BUFFER_LOCK_UNLOCK as i32);
 
     res
 }

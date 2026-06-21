@@ -11,7 +11,7 @@ unsafe extern "C-unwind" fn tuple_satisfies_snapshot(
     let mut tid = &raw mut ((*(*rsamslot).tuple).t_self);
     let tup = std::ptr::null_mut();
     let buffer = ReadBuffer(rel, ItemPointerGetBlockNumber(tid));
-    LockBuffer(buffer, BUFFER_LOCK_SHARE);
+    LockBuffer(buffer, BUFFER_LOCK_SHARE as i32);
     let mut res = rsam_find_appropriate_tuple(
         rel,
         buffer,
@@ -21,7 +21,7 @@ unsafe extern "C-unwind" fn tuple_satisfies_snapshot(
         &raw mut tup,
     );
 
-    LockBuffer(buffer, BUFFER_LOCK_UNLOCK);
+    LockBuffer(buffer, BUFFER_LOCK_UNLOCK as i32);
     ReleaseBuffer(buffer);
     if tup.is_null() {
         res = false;
