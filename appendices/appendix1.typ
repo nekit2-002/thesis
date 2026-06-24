@@ -1,6 +1,6 @@
 #import "../preamble.typ": file_listing
 
-= Реализация основных интерфейсов <fst_appendix>
+= Приложение 1 <fst_appendix>
 #file_listing("listings/handler_stuff/tableam.rs", "rust", "Реализация TableAmRoutine на Rust") <lst:tableam>
 #file_listing("listings/handler_stuff/trans.rs", "rust", "Связка типа TableAmArgs с типом internal") <lst:trans>
 #file_listing("listings/slot_stuff/ops.rs", "rust", "Операции, описываемые структурой TupleTableSlotOps")<lst:ops>
@@ -17,7 +17,7 @@
 #file_listing("listings/handler_stuff/scan-end.rs", "rust", "Реализация scan_end")<lst:scanend>
 #file_listing("listings/delete/rsam_delete.rs", "rust", "Реализация tuple_delete")<lst:delete>
 
-= Реализация функций взаимодействия с журналом предзаписи <snd_appendix>
+= Приложение 2 <snd_appendix>
 #file_listing("listings/wal_stuff/rsam_redo.rs", "rust","Реализация коллбека rsam_redo")<lst:rsam_redo>
 #file_listing("listings/wal_stuff/rsam_redo_insert.rs", "rust","Реализация функции rsam_redo_insert")<lst:rsam_redo_insert>
 #file_listing("listings/wal_stuff/rsam_identify.rs","rust", "Реализация коллбека rsam_identify")<lst:rsam_identify>

@@ -7,8 +7,8 @@
 #outline(target: selector(heading).before(<fst_appendix>, inclusive: false))
 
 // ? outline for appendices
-#set outline.entry(fill: none)
-#outline(target: selector(heading).after(<fst_appendix>, inclusive: true), title: [Приложения])
+// #set outline.entry(fill: none)
+#outline(target: selector(heading).after(<fst_appendix>, inclusive: true), title: none)
 
 #pagebreak()
 
@@ -82,8 +82,9 @@
 #pagebreak()
 
 // ? start of appendix section
-#counter(heading).update(0)
-#set heading(numbering: "A.1.", supplement: [Приложение])
+#set heading(numbering: none)
+// #counter(heading).update(0)
+// #set heading(numbering: "A.1.", supplement: [Приложение])
 // так же как и в main эта херня чтобы не прдрались к точкам на верхнем уровне
 // #set heading(numbering: "A.1", supplement: [Приложение])
 #show figure: set block(breakable: true)
