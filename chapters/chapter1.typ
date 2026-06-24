@@ -150,7 +150,7 @@ Postgres предоставляет библиотеку libpq @libpq, порт�
 
 #figure(
   image("../images/analysis/snapshot1.png", width: 50%),
-  caption: [Схема общего механизма обращения с памятью в PostgreSQL],
+  caption: [Интервалы видимости кортежей],
 ) <fig:snapshot1>
 
 На @fig:snapshot1 показана растянутая во времени конфигурация некоторой таблицы. В

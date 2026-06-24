@@ -143,7 +143,7 @@ PostgreSQL в bin каталоге по пути prefix создается ис�
   ```bash
   $ cargo pgrx install --release --pg-config=/full/path/to/pgdir/bin/pg_config
   ```,
-  caption: [Команда запуска сборки и установки расширения],
+  caption: [Команда запуска, сборки и установки расширения],
 ) <lst:pgrx-release>
 
 С этого момента экземпляр Postgres интегрирован с расширением. Далее все что нужно для начала работы ---
